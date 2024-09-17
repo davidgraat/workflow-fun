@@ -1,0 +1,26 @@
+name: Build Images (Main - Sandbox)
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      question:
+        description: 'Which do you like?'
+        required: true
+        default: 'two'
+        type: choice
+        options:
+          - one
+          - two
+
+env:
+  YOU_PICKED: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.question || 'I picked for you!' }}
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: script
+      run: |
+        echo "${{ env.YOU_PICKED }}"
