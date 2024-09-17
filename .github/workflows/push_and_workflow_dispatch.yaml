@@ -1,4 +1,4 @@
-name: Build Images (Main - Sandbox)
+name: Push and Workflow Dispatch
 on:
   push:
     branches:
